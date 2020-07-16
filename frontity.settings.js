@@ -18,16 +18,16 @@ const settings = {
               "/"
             ],
             [
-              "Nature",
-              "/category/nature/"
+              "Rock",
+              "/record_cat/rock/"
             ],
             [
-              "Travel",
-              "/category/travel/"
+              "Punk",
+              "/record_cat/punk/"
             ],
             [
-              "Japan",
-              "/tag/japan/"
+              "Grunge",
+              "/record_cat/grunge/"
             ],
             [
               "About Us",
@@ -50,8 +50,16 @@ const settings = {
             {
               type: "record",
               endpoint: "record"
-            },
+            }
+          ],
+          taxonomies: [
+            {
+              taxonomy: "record_cat",
+              endpoint: "record_cat",
+              postTypeEndpoint: "record"
+            }
           ]
+
         }
       }
     },
