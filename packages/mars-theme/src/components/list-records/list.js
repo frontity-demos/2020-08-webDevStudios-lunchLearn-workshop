@@ -27,9 +27,17 @@ const List = ({ state }) => {
       {/* Iterate over the items of the list. */}
       {data.items.map(({ type, id }) => {
         const item = state.source[type][id];
-        console.log(item)
-        // Render one Item component for each one.
-        return <Item key={item.id} item={item} />;
+        const {year, artist, featured_media, link, title: { rendered: titleRendered}, content: { rendered: contentRendered} } = item
+        
+        return <Item 
+          key={item.id} 
+          artist={artist} 
+          link={link} 
+          title={titleRendered} 
+          content={contentRendered}
+          featuredMediaId={featured_media}
+          year={year}
+        />;
       })}
       <Pagination />
     </Container>
