@@ -30,7 +30,7 @@ const Theme = ({ state }) => {
         <html lang="en" />
       </Head>
 
-      {/* Add some global styles for the whole site, like body or a's. 
+      {/* Add some global styles for the whole site, like body or a's.
       Not classes here because we use CSS-in-JS. Only global HTML tags. */}
       <Global styles={globalStyles} />
 
@@ -45,7 +45,7 @@ const Theme = ({ state }) => {
         <Main>
           <Switch>
             <Loading when={data.isFetching} />
-            <ListRecords when={data.isRecordCat} />
+            <ListRecords when={data.isRecordCat || data.isRecordArchive} />
             <List when={data.isArchive} />
             <Post when={data.isPostType} />
             <PageError when={data.isError} />

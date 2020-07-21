@@ -30,6 +30,10 @@ const settings = {
               "/record_cat/grunge/"
             ],
             [
+              "All records",
+              "/record_cat/"
+            ],
+            [
               "About Us",
               "/about-us/"
             ]
