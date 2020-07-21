@@ -35,8 +35,8 @@ const settings = {
             ]
           ],
           "featured": {
-            "showOnList": false,
-            "showOnPost": false
+            "showOnList": true,
+            "showOnPost": true
           }
         }
       }
@@ -49,7 +49,8 @@ const settings = {
           "postTypes": [
             {
               type: "record",
-              endpoint: "record"
+              endpoint: "record",
+              archive: "/record_cat"
             }
           ],
           taxonomies: [
