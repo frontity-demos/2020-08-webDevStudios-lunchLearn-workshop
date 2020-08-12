@@ -51,6 +51,7 @@ const Container = styled.section`
   margin: 0;
   padding: 24px;
   list-style: none;
+  background: #FFFCF2;
 `;
 
 const Header = styled.h3`
