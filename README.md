@@ -46,10 +46,52 @@ This repo contains a demo project that shows the use of Custom Post Types in a F
 
 #### 7. Using Custom Post Types in a Frontity Project
 
-- Verify Custom Post Type is properly available through the REST API
+1. Verify Custom Post Type is properly available through the REST API
   - CPT `record` → https://app-5efddb43c1ac181508283e93.closte.com/wp-json/wp/v2/record
   - Taxonomy `record_cat` → https://app-5efddb43c1ac181508283e93.closte.com/wp-json/wp/v2/record_cat
-- Define CPT in Frontity Project via `frontity.settings.js`
+2. Define CPT in Frontity Project via [`frontity.settings.js`](https://github.com/frontity-demos/2020-08-webDevStudios-lunchLearn-workshop/blob/ac181704242bed1fb315ded5c246551289715d4a/frontity.settings.js#L53)
+
+**`frontity.settings.js`**
+```js
+{
+  "name": "@frontity/wp-source",
+  "state": {
+    "source": {
+      "api": "https://app-5efddb43c1ac181508283e93.closte.com/wp-json",
+      "postTypes": [
+        {
+          type: "record",
+          endpoint: "record",
+          archive: "/record_cat"
+        }
+      ],
+      taxonomies: [
+        {
+          taxonomy: "record_cat",
+          endpoint: "record_cat",
+          postTypeEndpoint: "record"
+        }
+      ]
+
+    }
+  }
+},
+```
+
+3. Custom Post Types will share the `<Post>` component to show details of each item
+
+**`src/components/index.js`**
+```jsx
+ <Post when={data.isPostType} />
+```
+   
+
+4. Custom Taxonomy will use the `<ListRecords>` component to show list of records
+
+**`src/components/index.js`**
+```jsx
+<ListRecords when={data.isRecordCat || data.isRecordArchive} />
+```
 
 
 ---

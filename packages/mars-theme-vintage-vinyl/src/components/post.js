@@ -29,7 +29,7 @@ const Post = ({ state, actions, libraries }) => {
 
   // Load the post, but only if the data is ready.
   return data.isReady ? (
-    <Container>
+    <Container type={data.type}>
       <div>
         <Title dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
 
@@ -71,13 +71,14 @@ const Container = styled.div`
   width: 800px;
   margin: 0;
   padding: 24px;
+  background: ${({type}) => type === 'record' ? '#FCBF49' : '#003049' };
+  color: ${({type}) => type === 'record' ? '#000' : '#FFF' };
 `;
 
 const Title = styled.h1`
   margin: 0;
   margin-top: 24px;
   margin-bottom: 8px;
-  color: rgba(12, 17, 43);
 `;
 
 const StyledLink = styled(Link)`
@@ -85,13 +86,11 @@ const StyledLink = styled(Link)`
 `;
 
 const Author = styled.p`
-  color: rgba(12, 17, 43, 0.9);
   font-size: 0.9em;
   display: inline;
 `;
 
 const DateWrapper = styled.p`
-  color: rgba(12, 17, 43, 0.9);
   font-size: 0.9em;
   display: inline;
 `;
@@ -101,7 +100,6 @@ const DateWrapper = styled.p`
  * selectors to style that HTML.
  */
 const Content = styled.div`
-  color: rgba(12, 17, 43, 0.8);
   word-break: break-word;
 
   * {
