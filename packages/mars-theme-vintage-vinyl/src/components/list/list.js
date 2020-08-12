@@ -27,7 +27,6 @@ const List = ({ state }) => {
       {/* Iterate over the items of the list. */}
       {data.items.map(({ type, id }) => {
         const item = state.source[type][id];
-        console.log(item)
         // Render one Item component for each one.
         return <Item key={item.id} item={item} />;
       })}

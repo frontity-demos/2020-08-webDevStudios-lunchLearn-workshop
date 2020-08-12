@@ -20,6 +20,7 @@
     "@frontity/tiny-router": "^1.2.1",
     "@frontity/wp-source": "^1.8.0",
     "frontity": "^1.10.0",
+    "mars-theme-vintage-vinyl": "file:packages/mars-theme-vintage-vinyl",
     "styled-components": "^4.4.1"
   }
 }

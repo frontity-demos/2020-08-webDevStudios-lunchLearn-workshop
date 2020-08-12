@@ -9,7 +9,7 @@ const settings = {
   },
   "packages": [
     {
-      "name": "@frontity/mars-theme",
+      "name": "mars-theme-vintage-vinyl",
       "state": {
         "theme": {
           "menu": [
@@ -32,6 +32,10 @@ const settings = {
             [
               "All records",
               "/record_cat/"
+            ],
+            [
+              "Catalogue",
+              "/catalogue"
             ],
             [
               "About Us",
