@@ -46,10 +46,12 @@ This repo contains a demo project that shows the use of Custom Post Types in a F
 
 #### 7. Using Custom Post Types in a Frontity Project
 
-1. Verify Custom Post Type is properly available through the REST API
+##### 7.1 Verify Custom Post Type is properly available through the REST API
   - CPT `record` → https://app-5efddb43c1ac181508283e93.closte.com/wp-json/wp/v2/record
   - Taxonomy `record_cat` → https://app-5efddb43c1ac181508283e93.closte.com/wp-json/wp/v2/record_cat
-2. Define CPT in Frontity Project via [`frontity.settings.js`](https://github.com/frontity-demos/2020-08-webDevStudios-lunchLearn-workshop/blob/ac181704242bed1fb315ded5c246551289715d4a/frontity.settings.js#L53)
+
+
+##### 7.2 Define CPT in Frontity Project via [`frontity.settings.js`](https://github.com/frontity-demos/2020-08-webDevStudios-lunchLearn-workshop/blob/ac181704242bed1fb315ded5c246551289715d4a/frontity.settings.js#L53)
 
 **`frontity.settings.js`**
 ```js
@@ -78,23 +80,84 @@ This repo contains a demo project that shows the use of Custom Post Types in a F
 },
 ```
 
-3. Custom Post Types will share the `<Post>` component to show details of each item
+##### 7.3 Use `frontity.actions.fetch` to check CPT links
+
+`/record/1984/`
+`/record_cat/rock/`
+
+
+
+##### 7.3 Custom Post Type `record` will use the `<Record>` component to show details of each record (links like `/record/nevermind/`)
 
 **`src/components/index.js`**
 ```jsx
- <Post when={data.isPostType} />
+ <Record when={data.isRecord} />
 ```
    
 
-4. Custom Taxonomy will use the `<ListRecords>` component to show list of records
+4. Custom Taxonomy `record_cat` will use the `<ListRecords>` component to show list of records (links like `/record_cat/rock/`)
 
 **`src/components/index.js`**
 ```jsx
 <ListRecords when={data.isRecordCat || data.isRecordArchive} />
 ```
 
+---
+
+### Launch a development server
+
+```
+npx frontity dev
+```
+
+Runs the app in development mode. Open http://localhost:3000 to view it in the browser.
+
+The site will automatically reload if you make changes inside the `packages` folder. You will see the build errors in the console.
+
+> Have a look at our [Quick Start Guide](https://docs.frontity.org/getting-started/quick-start-guide)
+
+### Create your custom theme
+
+```
+npx frontity create-package your-custom-theme
+```
+
+Use the command `npx frontity create-package` to create a new package that can be set in your `frontity.settings.js` as your theme
+
+> Have a look at our blog post [How to Create a React WordPress Theme in 30 Minutes](https://frontity.org/blog/how-to-create-a-react-theme-in-30-minutes/)
+
+### Create a production-ready build
+
+```
+npx frontity build
+```
+
+Builds the app for production to the `build` folder.
+
+This will create a `/build` folder with a `server.js` (a [serverless function](https://vercel.com/docs/v2/serverless-functions/introduction)) file and a `/static` folder with all your javascript files and other assets.
+
+Your app is ready to be deployed.
+
+> Get more info about [Frontity's architecture](https://docs.frontity.org/architecture)
+
+### Deploy
+
+With the files generated in the _build_ you can deploy your project
+
+#### As a node app
+
+Use `npx frontity serve` to run it like a normal Node app.
+
+This command generates (and runs) a small web server that uses the generated `server.js` and `/static` to serve your content
+
+#### As a serverless service
+
+Upload your `static` folder to a CDN and your `server.js` file to a serverless service, like Now or Netlify.
+
+> Get more info about [how to deploy](https://docs.frontity.org/deployment) a Frontity project
 
 ---
+
 
 ### » Frontity Channels 🌎
 
