@@ -1,65 +1,56 @@
-# vintage-vinyl
+# Vintage Vinyl
 
-This project was bootstrapped with [Frontity](https://frontity.org/).
+This repo contains a demo project that shows the use of Custom Post Types in a Frontity Project. This repo was created for the "Lunch & Learn 🍱 The React framework for WP - Frontity" organized by [WebDevStudios](https://webdevstudios.com/)
 
-#### Table of Contents
 
-- [Launch a development server](#launch-a-development-server)
-- [Create your custom theme](#create-your-custom-theme)
-- [Create a production-ready build](#create-a-production-ready-build)
-- [Deploy](#deploy)
+## Workshop Agenda
 
-### Launch a development server
+### 1️⃣ Part 1: `mars-theme`
 
-```
-npx frontity dev
-```
+#### 1. Create a frontity project from command line → `mars-theme`
 
-Runs the app in development mode. Open http://localhost:3000 to view it in the browser.
+- 📕 [Frontity CLI](https://docs.frontity.org/frontity-cli)
 
-The site will automatically reload if you make changes inside the `packages` folder. You will see the build errors in the console.
+#### 2. Review `mars-theme`
 
-> Have a look at our [Quick Start Guide](https://docs.frontity.org/getting-started/quick-start-guide)
+- 📕 [`@frontity/mars-theme`](https://docs.frontity.org/frontity-themes/frontity-mars-theme)
+- 📺 [Frontity Talks 2020-04 - ES6 topics & mars-theme](https://www.youtube.com/watch?v=e6n1j4gwFjQ&t=1672s)
 
-### Create your custom theme
+#### 3. `frontity.settings.js` & Namespaces
 
-```
-npx frontity create-package your-custom-theme
-```
+- 📕 [Learning Frontity > Settings](https://docs.frontity.org/learning-frontity/settings) 
+- 📕 [Learning Frontity > Namespaces](https://docs.frontity.org/learning-frontity/namespaces) 
 
-Use the command `npx frontity create-package` to create a new package that can be set in your `frontity.settings.js` as your theme
+#### 4. `frontity` global object → `state`
 
-> Have a look at our blog post [How to Create a React WordPress Theme in 30 Minutes](https://frontity.org/blog/how-to-create-a-react-theme-in-30-minutes/)
+- 📕 [Learning Frontity > State](https://docs.frontity.org/learning-frontity/state)
+- 📺 [Frontity Talks 2020-02 - wp-source (state & fetch)](https://www.youtube.com/watch?v=eW5xZlpcqQk&t=1073s)
 
-### Create a production-ready build
 
-```
-npx frontity build
-```
+#### 5. Styled Components
 
-Builds the app for production to the `build` folder.
+- 📕 [Learning Frontity > Styles](https://docs.frontity.org/learning-frontity/styles)
+- 📺 [Frontity Talks 2020-01 - CSS In JS](https://www.youtube.com/watch?v=e-_66W8pfdY&t=1609s)
 
-This will create a `/build` folder with a `server.js` (a [serverless function](https://vercel.com/docs/v2/serverless-functions/introduction)) file and a `/static` folder with all your javascript files and other assets.
+#### 6. Packages & `wp-source` package
 
-Your app is ready to be deployed.
+- 📕 [Frontity Packages](https://docs.frontity.org/api-reference-1)
+- 📕 [`@frontity/wp-source`](https://docs.frontity.org/api-reference-1/wordpress-source)
+- 📺 [Frontity Talks 2020-01 - wp-source](https://www.youtube.com/watch?v=e-_66W8pfdY&t=96s)
 
-> Get more info about [Frontity's architecture](https://docs.frontity.org/architecture)
+- ☝️ Using wordpress.com as a source of data 
+    * https://test.frontity.org/wp-json
+    * https://public-api.wordpress.com/wp/v2/sites/frontitytest.wordpress.com
 
-### Deploy
+### 2️⃣ Part 2: `mars-theme-vintage-vinyl`
 
-With the files generated in the _build_ you can deploy your project
+#### 7. Using Custom Post Types in a Frontity Project
 
-#### As a node app
+- Verify Custom Post Type is properly available through the REST API
+  - CPT `record` → https://app-5efddb43c1ac181508283e93.closte.com/wp-json/wp/v2/record
+  - Taxonomy `record_cat` → https://app-5efddb43c1ac181508283e93.closte.com/wp-json/wp/v2/record_cat
+- Define CPT in Frontity Project via `frontity.settings.js`
 
-Use `npx frontity serve` to run it like a normal Node app.
-
-This command generates (and runs) a small web server that uses the generated `server.js` and `/static` to serve your content
-
-#### As a serverless service
-
-Upload your `static` folder to a CDN and your `server.js` file to a serverless service, like Now or Netlify.
-
-> Get more info about [how to deploy](https://docs.frontity.org/deployment) a Frontity project
 
 ---
 
