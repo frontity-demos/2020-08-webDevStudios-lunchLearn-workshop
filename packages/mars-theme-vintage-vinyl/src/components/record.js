@@ -4,15 +4,12 @@ import Link from "./link";
 import List from "./list";
 import FeaturedMedia from "./featured-media";
 
-const Post = ({ state, actions, libraries }) => {
+const Record = ({ state, actions, libraries }) => {
   // Get information about the current URL.
   const data = state.source.get(state.router.link);
   // Get the data of the post.
-  const post = state.source[data.type][data.id];
-  // Get the data of the author.
-  const author = state.source.author[post.author];
-  // Get a human readable date.
-  const date = new Date(post.date);
+  const record = state.source[data.type][data.id];
+  const {year, artist, featured_media, link, title: { rendered: titleRendered}, content: { rendered: contentRendered} } = record
 
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
@@ -31,67 +28,56 @@ const Post = ({ state, actions, libraries }) => {
   return data.isReady ? (
     <Container type={data.type}>
       <div>
-        <Title dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-
-        {/* Only display author and date on posts */}
-        {data.isPost && (
-          <div>
-            {author && (
-              <StyledLink link={author.link}>
-                <Author>
-                  By <b>{author.name}</b>
-                </Author>
-              </StyledLink>
-            )}
-            <DateWrapper>
-              {" "}
-              on <b>{date.toDateString()}</b>
-            </DateWrapper>
-          </div>
-        )}
+        <Title dangerouslySetInnerHTML={{ __html: record.title.rendered }} />
+        <SubTitle>{artist} - {year}</SubTitle>
       </div>
 
       {/* Look at the settings to see if we should include the featured image */}
       {state.theme.featured.showOnPost && (
-        <FeaturedMedia id={post.featured_media} />
+        <FeaturedMedia id={record.featured_media} />
       )}
 
       {/* Render the content using the Html2React component so the HTML is processed
        by the processors we included in the libraries.html2react.processors array. */}
       <Content>
-        <Html2React html={post.content.rendered} />
+        <Html2React html={record.content.rendered} />
       </Content>
     </Container>
   ) : null;
 };
 
-export default connect(Post);
+export default connect(Record);
 
 const Container = styled.div`
   width: 800px;
   margin: 0;
   padding: 24px;
+  background: ${({type}) => type === 'record' ? '#FCBF49' : '#003049' };
+  color: ${({type}) => type === 'record' ? '#000' : '#FFF' };
 `;
 
 const Title = styled.h1`
   margin: 0;
   margin-top: 24px;
   margin-bottom: 8px;
-  color: rgba(12, 17, 43);
 `;
+
+const SubTitle = styled.h3`
+  margin: 0;
+  margin-bottom: 8px;
+`;
+
 
 const StyledLink = styled(Link)`
   padding: 15px 0;
 `;
 
 const Author = styled.p`
-  color: rgba(12, 17, 43, 0.9);
   font-size: 0.9em;
   display: inline;
 `;
 
 const DateWrapper = styled.p`
-  color: rgba(12, 17, 43, 0.9);
   font-size: 0.9em;
   display: inline;
 `;
@@ -101,7 +87,6 @@ const DateWrapper = styled.p`
  * selectors to style that HTML.
  */
 const Content = styled.div`
-  color: rgba(12, 17, 43, 0.8);
   word-break: break-word;
 
   * {

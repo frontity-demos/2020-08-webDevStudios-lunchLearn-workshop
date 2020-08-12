@@ -5,6 +5,7 @@ import Header from "./header";
 import List from "./list";
 import ListRecords from "./list-records";
 import Post from "./post";
+import Record from "./record";
 import Loading from "./loading";
 import Title from "./title";
 import PageError from "./page-error";
@@ -46,6 +47,7 @@ const Theme = ({ state }) => {
             <Loading when={data.isFetching} />
             <ListRecords when={data.isRecordCat || data.isRecordArchive} />
             <List when={data.isArchive} />
+            <Record when={data.isRecord} />
             <Post when={data.isPostType} />
             <PageError when={data.isError} />
           </Switch>
